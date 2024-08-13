@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>migration assistant</title>
+</head>
+<body>
+  <div class="mx-auto" style="width: 400px;">
+    <h1>migration assistant</h1>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Time</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range . }}
+      <tr>
+        <td>{{ .ID }}</td>
+        <td>{{ .Name }}</td>
+        <td>{{ .Time}}</td>
+        <td>{{ .Status}}</td>
+        <td>
+            <form action="migrations/apply/{{ .ID }}" method="post">
+              <button type="submit" value="Submit" class="btn btn-primary btn-sm">apply</button>
+            </form>
+            <form action="migrations/rollback/{{ .ID }}" method="post">
+              <button type="submit" value="Submit" class="btn btn-secondary btn-sm">rollback</button>
+            </form>
+        </td>
+        {{ end }}
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

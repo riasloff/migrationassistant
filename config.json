@@ -1,0 +1,14 @@
+{
+    "database": [
+      {
+        "driver": "postgres",
+        "dsn": "host=localhost port=5432 user=postgres password=golangpassword dbname=golang sslmode=disable"
+      },
+      {
+        "driver": "mysql",
+        "dsn": "mysql:golangpassword@tcp(localhost:3306)/golang?tls=skip-verify"
+      }],
+    "server": {
+        "port": "8080"
+    }
+}
